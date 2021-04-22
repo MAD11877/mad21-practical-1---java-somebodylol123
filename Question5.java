@@ -1,7 +1,7 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class Question5
-{
+public class Question5 {
   public static void main(String[] args)
   {
     /**
@@ -27,6 +27,38 @@ public class Question5
      */
      
     Scanner in = new Scanner(System.in);
-    
+    System.out.print("Number of numbers:");
+    int noOfNum = in.nextInt();
+    int[] num = new int[noOfNum];
+
+    for (int i = 0; i < noOfNum; i++ ){
+      num[i] = in.nextInt();
+    }
+
+    Arrays.sort(num);
+    int count = 0;
+    int tempCount;
+    int mostAppeared = 0;
+    int temp;
+
+    for (int i : num)
+    {
+      temp = num[i];
+      tempCount = 1;
+
+      for (int j = i+1; j < num.length; j++)
+      {
+        if (temp == num[j]){
+          tempCount ++;
+        }
+      }
+
+      if (tempCount > count){
+        mostAppeared = temp;
+        count = tempCount;
+      }
+    }
+
+    System.out.print(mostAppeared);
   }
 }
